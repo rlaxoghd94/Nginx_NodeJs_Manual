@@ -90,5 +90,21 @@ Then, restart Nginx:
 sudo systemctl restart nginx
 ```
 
+-------------
+## Great Practice Examples
+To test `Nginx` with its reverse proxy, you need the following:
+ - Virtual Machine (VMWare, VirtualBox, etc) network setting set to a `bridged network`
+ 	- This allows external access from your local host machine to the local virtual machine via an IP Address
+	- Must use `sudo ufw allow 80` in order to allow external `HTTP`(port 80) access
+	- VM must be equipped with `Nginx`, `Nodejs`, and `npm` (use `npm`to install `express`)
+ - Check if `/etc/nginx/nginx.conf` has `:80` open for access
+ - Edit `/etc/nginx/sites-available/default`'s `Location /` block
+	- add `proxy_pass http://127.0.0.1:{port}`, the address where `Express` is being run at
+ - On your local machine, try to access `http://{VM IP Addr}` to check if `Nginx` reroutes to `Express`
+ - If all of the above requirements are met, you've just mastered the concept of reverse proxy
+ - From here on, you can deepen the complexity of `Nginx` practice by having multiple `Node` application running with different number of *server blocks* within the `nginx.conf` and different number of `worker processes` within the config file
+
+<br></br>
+<br></br>
 ## Node.js manual
 - [Link](https://github.com/rlaxoghd94/Nginx_NodeJs_Manual/blob/master/Nodejs/README.md)
