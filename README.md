@@ -103,6 +103,8 @@ To test `Nginx` with its reverse proxy, you need the following:
  - On your local machine, try to access `http://{VM IP Addr}` to check if `Nginx` reroutes to `Express`
  - If all of the above requirements are met, you've just mastered the concept of reverse proxy
  - From here on, you can deepen the complexity of `Nginx` practice by having multiple `Node` application running with different number of *server blocks* within the `nginx.conf` and different number of `worker processes` within the config file
+ - Load-balancing
+	- Now this is a different problem where you want to take multiple request at one `http://{IP}` but handle it with multiple `Node Applications`(1:N Relation). In order to achieve this, you must edit `/etc/nginx/conf.d/load-balancer.conf` so that `Nginx` distribute the requests to different `Node Applications` in a sensible way.
 
 <br></br>
 <br></br>
